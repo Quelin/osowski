@@ -44,11 +44,13 @@
     <%= f.label :lastname %><br>
     <%= f.text_field :lastname, class: "form-control" %>
   </div>
-  <checkbox><div class="field" id="isFirmaSelected">
+
+  <div class="field">
     <%= f.label :firma %><br>
-    <%= f.check_box :firma, class: "form-control" %>
-  </div></checkbox>
-  <div id="test">
+    <%= f.check_box :firma, class: "form-control", id: 'checkbox' %>
+  </div>
+  
+<div id="delivery" style="display:none;">
   <div class="field">
     <%= f.label :nazwa %><br>
     <%= f.text_field :nazwa, class: "form-control" %>
@@ -60,7 +62,11 @@
   <div class="field">
     <%= f.label :NIP %><br>
     <%= f.text_field :NIP, class: "form-control" %>
-  </div></div>
+  </div>
+  </div>
+
+
+
   <div class="field">
     <%= f.label :phone %><br>
     <%= f.text_field :phone, class: "form-control" %>
@@ -93,7 +99,15 @@
 </div>
 </div>
 <script>
-$( "checkbox" ).click(function() {
-  $( "#test" ).toggle( "slow" );
-});
+var checkbox = document.getElementById('checkbox');
+var delivery_div = document.getElementById('delivery');
+var showHiddenDiv = function(){
+   if(checkbox.checked) {
+     delivery_div.style['display'] = 'block';
+   } else {
+     delivery_div.style['display'] = 'none';
+   } 
+}
+checkbox.onclick = showHiddenDiv;
+showHiddenDiv();
 </script>
