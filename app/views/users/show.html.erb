@@ -1,0 +1,56 @@
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link', class: "btn btn-info") %>
+<br /><br /><br />
+		<div class="panel panel-info">
+        <div class="panel-heading">User details</div>
+        <div class="panel-body">
+
+	<table class = "table table-striped table-hover">
+		<tr>
+			<th>ID:</th>
+			<td><%= @user.id %></td>
+		</tr>
+		<tr class="active">
+			<th>Name:</th>
+			<td><%= @user.name %></td>
+		</tr>
+		<tr>
+			<th>Last Name:</th>
+			<td><%= @user.lastname %></td>
+		</tr>
+		<tr  class="active">
+			<th>E-mail:</th>
+			<td><%= @user.email %></td>
+		</tr>
+		<tr>
+			<th>Organization Name:</th>
+			<td><%= @user.nazwa %></td>
+		</tr>
+		<tr  class="active">
+			<th>REGON:</th>
+			<td><%= @user.REGON %></td>
+		</tr>
+		<tr>
+			<th>NIP:</th>
+			<td><%= @user.NIP %></td>
+		</tr>
+		<tr  class="active">
+			<th>Phone:</th>
+			<td><%= @user.phone %></td>
+		</tr>
+		<tr>
+			<th>Kod:</th>
+			<td><%= @user.kod %></td>
+		</tr>
+		<tr  class="active">
+			<th>Street:</th>
+			<td><%= @user.ulica %></td>
+		</tr>
+		<tr>
+			<th>Town:</th>
+			<td><%= @user.miasto %></td>
+		</tr>
+	</table>
+	<p><strong>Description:</strong></p><br />
+	<p><%= @user.description %></p>
+                </div>
+              </div>
