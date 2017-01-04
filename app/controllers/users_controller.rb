@@ -43,19 +43,14 @@ class UsersController < ApplicationController
 
     def update
     @user = User.find(params[:id])
-    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
-    params[:user].delete(:password)
-    params[:user].delete(:password_confirmation)
-      @user.update_attributes(user_params)
+    if @user.update_attributes(user_params)
       redirect_to(:action => 'show', :id => @user.id)
-    elsif @user.update_attributes(user_params)
-      redirect_to(:action => 'show', :id => @user.id)
-        
     else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render('edit')
+        
     end
     end
+
 
   private
     def set_user
