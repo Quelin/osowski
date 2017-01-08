@@ -19,7 +19,7 @@ gem 'devise'
 gem "less-rails"
 gem "therubyracer"
 gem 'jquery-turbolinks'
-gem 'jquery-datatables-rails'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'jquery-ui-rails'
 
 group :development, :test do
