@@ -1,6 +1,5 @@
-
-$(document).ready(function(){
-$('#users').DataTable({
+document.addEventListener("turbolinks:load", function() {
+  $('#users').DataTable({
   // ajax: ...,
   // autoWidth: false,
   // pagingType: 'full_numbers',
@@ -13,7 +12,8 @@ $('#users').DataTable({
 });
 });
 
-$(document).ready(function(){
+
+document.addEventListener("turbolinks:load", function() {
 $('#users1').DataTable({
   // ajax: ...,
   autoWidth: true,
@@ -26,3 +26,5 @@ $('#users1').DataTable({
   // http://datatables.net/reference/option/pagingType
 });
 });
+
+
