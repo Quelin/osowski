@@ -1,7 +1,5 @@
 
-$(document).on('ready page:load', function () {
-  console.log('test');
-
+$(document).on('turbolinks:load', function() {
 $('#users').DataTable({
 
   // ajax: ...,
@@ -17,8 +15,7 @@ $('#users').DataTable({
 });
 });
 
-$(document).on('ready page:load', function () {
-  console.log('test');
+$(document).on('turbolinks:load', function() {
 $('#users1').DataTable({
 
   // ajax: ...,
