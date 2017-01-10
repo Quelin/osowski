@@ -20,6 +20,7 @@ gem "therubyracer"
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
+gem 'turbolinks'
 
 group :development, :test do
   gem 'byebug', platform: :mri
