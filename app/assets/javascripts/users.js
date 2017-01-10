@@ -1,5 +1,5 @@
 
-$(document).on('turbolinks:load', function() {
+$(document).on('ready page:load', function () {
 $('#users').DataTable({
   // ajax: ...,
   autoWidth: true,
@@ -14,7 +14,7 @@ $('#users').DataTable({
 });
 });
 
-$(document).on('turbolinks:load', function() {
+$(document).on('ready page:load', function () {
 $('#users1').DataTable({
   // ajax: ...,
   autoWidth: true,
@@ -27,3 +27,5 @@ $('#users1').DataTable({
   // http://datatables.net/reference/option/pagingType
 });
 });
+
+console.log('test');
