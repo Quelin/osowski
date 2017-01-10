@@ -1,7 +1,8 @@
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
 $('#users').DataTable({
   // ajax: ...,
+  autoWidth: true,
   // autoWidth: false,
   // pagingType: 'full_numbers',
   // processing: true,
@@ -13,7 +14,7 @@ $('#users').DataTable({
 });
 });
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
 $('#users1').DataTable({
   // ajax: ...,
   autoWidth: true,
