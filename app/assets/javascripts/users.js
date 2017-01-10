@@ -1,6 +1,9 @@
 
 $(document).on('ready page:load', function () {
+  console.log('test');
+
 $('#users').DataTable({
+
   // ajax: ...,
   autoWidth: true,
   // autoWidth: false,
@@ -15,7 +18,9 @@ $('#users').DataTable({
 });
 
 $(document).on('ready page:load', function () {
+  console.log('test');
 $('#users1').DataTable({
+
   // ajax: ...,
   autoWidth: true,
   // pagingType: 'full_numbers',
@@ -27,5 +32,3 @@ $('#users1').DataTable({
   // http://datatables.net/reference/option/pagingType
 });
 });
-
-console.log('test');
