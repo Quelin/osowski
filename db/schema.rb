@@ -17,14 +17,15 @@ ActiveRecord::Schema.define(version: 20161224205631) do
     t.string   "encrypted_password",     default: "",   null: false
     t.string   "name"
     t.string   "lastname"
-    t.boolean  "firma",                  default: true
-    t.string   "nazwa"
+    t.boolean  "is_organization",        default: true
+    t.string   "organization_name"
     t.integer  "REGON"
     t.integer  "NIP"
     t.integer  "phone"
-    t.string   "kod"
-    t.string   "ulica"
-    t.string   "miasto"
+    t.integer  "mobile_phone"
+    t.string   "postcode"
+    t.string   "street"
+    t.string   "town"
     t.boolean  "admin"
     t.text     "description"
     t.string   "reset_password_token"

@@ -17,30 +17,26 @@
 	<table class = "table table-striped table-hover" id="users" >
 		<thead>
 		<tr>
-			<th>Name</th>
+			<th>Email</th>
 			<th>Last Name</th>
 			<th>Organization Name</th>
-			<th>REGON</th>
 			<th>NIP</th>
 			<th>Phone</th>
-			<th>Street</th>
-			<th>Town</th>
+			<th>Mobile Phone</th>
 			<th>Actions</th>
 		</tr>
 		</thead>
 
 		<tbody>
-		<% @firmy.each do |f| %>
+		<% @organization.each do |f| %>
 		
 		<tr>
-			<td><%= f.name %></td>
+			<td><%= f.email %></td>
 			<td><%= f.lastname %></td>
-			<td><%= f.nazwa %></td>
-			<td><%= f.REGON %></td>
+			<td><%= f.organization_name %></td>
 			<td><%= f.NIP %></td>
 			<td><%= f.phone %></td>
-			<td><%= f.ulica %></td>
-			<td><%= f.miasto %></td>
+			<td><%= f.mobile_phone %></td>
 			<td>
 				<%= link_to("Details", {:action => 'show', :id => f.id}, :class => 'action show', class: "btn btn-info") %>
 				<%= link_to("Edit", {:action => 'edit', :id => f.id}, :class => 'action edit', class: "btn btn-warning") %>
@@ -57,21 +53,21 @@
 		<table class = "table table-striped table-hover" id="users1" >
 		<thead>
 		<tr>
-			<th>Name</th>
+			<th>Email</th>
 			<th>Last Name</th>
 			<th>Phone</th>
-			<th>Town</th>
+			<th>Mobile Phone</th>
 			<th>Actions</th>
 		</tr>
 		</thead>
 
 		<tbody>
-		<% @osoby_prywatne.each do |o| %>
+		<% @private_person.each do |o| %>
 		<tr>
-			<td><%= o.name %></td>
+			<td><%= o.email %></td>
 			<td><%= o.lastname %></td>
 			<td><%= o.phone %></td>
-			<td><%= o.miasto %></td>
+			<td><%= o.mobile_phone %></td>
 			<td>
 				<%= link_to("Details", {:action => 'show', :id => o.id}, :class => 'action show', class: "btn btn-info") %>
 				<%= link_to("Edit", {:action => 'edit', :id => o.id}, :class => 'action edit', class: "btn btn-warning") %>

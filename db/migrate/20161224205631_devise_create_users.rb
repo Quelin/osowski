@@ -6,14 +6,15 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :encrypted_password, null: false, default: ""
       t.string :name
       t.string :lastname
-      t.boolean :firma, default: true
-      t.string :nazwa
+      t.boolean :is_organization, default: true
+      t.string :organization_name
       t.integer :REGON
       t.integer :NIP
       t.integer :phone
-      t.string :kod
-      t.string :ulica
-      t.string :miasto
+      t.integer :mobile_phone
+      t.string :postcode
+      t.string :street
+      t.string :town
       t.boolean :admin
       t.text :description
 

@@ -36,14 +36,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :firma %><br>
-    <%= f.check_box :firma, class: "form-control", id: 'checkbox' %>
-  </div>
+    <%= f.label :is_organization %>
+    <%= f.check_box :is_organization, class: "checkbox inline", id: 'checkbox' %>
+  </div><br />
   
 <div id="delivery" style="display:none;">
   <div class="field">
-    <%= f.label :nazwa %><br>
-    <%= f.text_field :nazwa, class: "form-control" %>
+    <%= f.label :organization_name %><br>
+    <%= f.text_field :organization_name, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :REGON %><br>
@@ -62,21 +62,25 @@
     <%= f.text_field :phone, class: "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :kod %><br>
-    <%= f.text_field :kod, class: "form-control" %>
+    <%= f.label :mobile_phone %><br>
+    <%= f.text_field :mobile_phone, class: "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :ulica %><br>
-    <%= f.text_field :ulica, class: "form-control" %>
+    <%= f.label :postcode %><br>
+    <%= f.text_field :postcode, class: "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :miasto %><br>
-    <%= f.text_field :miasto, class: "form-control" %>
+    <%= f.label :street %><br>
+    <%= f.text_field :street, class: "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :admin %><br>
-    <%= f.check_box :admin, class: "form-control" %>
+    <%= f.label :town %><br>
+    <%= f.text_field :town, class: "form-control" %>
   </div>
+  <div class="field">
+    <%= f.label :admin %>
+    <%= f.check_box :admin, class: "checkbox inline" %>
+  </div><br />
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description, class: "form-control" %>

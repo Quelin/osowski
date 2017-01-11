@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<th>Organization Name:</th>
-			<td><%= @user.nazwa %></td>
+			<td><%= @user.organization_name %></td>
 		</tr>
 		<tr  class="active">
 			<th>REGON:</th>
@@ -38,16 +38,20 @@
 			<td><%= @user.phone %></td>
 		</tr>
 		<tr>
-			<th>Kod:</th>
-			<td><%= @user.kod %></td>
+			<th>Phone:</th>
+			<td><%= @user.mobile_phone %></td>
 		</tr>
 		<tr  class="active">
-			<th>Street:</th>
-			<td><%= @user.ulica %></td>
+			<th>Kod:</th>
+			<td><%= @user.postcode %></td>
 		</tr>
 		<tr>
+			<th>Street:</th>
+			<td><%= @user.street %></td>
+		</tr>
+		<tr  class="active">
 			<th>Town:</th>
-			<td><%= @user.miasto %></td>
+			<td><%= @user.town %></td>
 		</tr>
 	</table>
 	<p><strong>Description:</strong></p><br />

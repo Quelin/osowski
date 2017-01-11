@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   	def index
   		@users = User.all
-      @firmy = User.firmy
-      @osoby_prywatne = User.osoby_prywatne
+      @organization = User.organization
+      @private_person = User.private_person
   	end
       def show
       @user = User.find(params[:id])
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :name, :lastname, :firma, :nazwa, :REGON, :NIP, :phone, :kod, :ulica, :miasto, :admin, :description)
+      params.require(:user).permit(:email, :password, :password_confirmation, :name, :lastname, :is_organization, :organization_name, :REGON, :NIP, :phone, :mobile_phone, :postcode, :street, :town, :admin, :description)
     end
 
 end
