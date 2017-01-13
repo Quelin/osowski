@@ -1,0 +1,34 @@
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link', class: "btn btn-info") %>
+<br /><br /><br />
+    <div class="panel panel-info">
+        <div class="panel-heading">Service details</div>
+        <div class="panel-body">
+
+  <table class = "table table-striped table-hover">
+    <tr>
+      <th>ID:</th>
+      <td><%= @service.id %></td>
+    </tr>
+    <tr class="active">
+      <th>Name:</th>
+      <td><%= @service.name %></td>
+    </tr>
+    <tr>
+      <th>Description:</th>
+      <td><%= @service.description %></td>
+    </tr>
+    <tr  class="active">
+      <th>Own Equipment:</th>
+      <td><%= @service.own_equipment %></td>
+    </tr>
+    <tr>
+      <th>Service Start Date:</th>
+      <td><%= @service.start_date %></td>
+    </tr>
+    <tr  class="active">
+      <th>Service End Date:</th>
+      <td><%= @service.end_date %></td>
+    </tr>
+  </table>
+                </div>
+              </div>

@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161224205631) do
+ActiveRecord::Schema.define(version: 20170111192024) do
+
+  create_table "services", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "own_equipment"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false

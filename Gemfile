@@ -21,6 +21,8 @@ gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 gem 'turbolinks'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 
 group :development, :test do
   gem 'byebug', platform: :mri
