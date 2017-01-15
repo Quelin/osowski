@@ -7,7 +7,8 @@
     </div>
     <div class="panel-body">
       <br />
-      <%= link_to("<< Back to Users", users_path, class: "btn btn-info") %>
+      <%= link_to("<< Back to Users", users_path, class: "btn btn-info") %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to("Add New Service", new_user_service_path, class: "btn btn-success") %>
 
   <br /><br /><br />
   <table class = "table table-striped table-hover" id = "services">
@@ -34,9 +35,9 @@
         <td><%= service.try(:start_date).try(:to_date) %></td>
         <td><%= service.try(:end_date).try(:to_date) %></td>
         <td><%= service.user.email if service.user %></td>
-        <td><%= link_to("Details", {:action => 'show', :id => service.id}, :class => 'action show', class: "btn btn-info") %></td>
-        <td><%= link_to("Edit", {:action => 'edit', :id => service.id, :user => service.user_id}, :class => 'action edit', class: "btn btn-warning") %></td>
-        <td><%= link_to 'Delete', service, method: :delete, data: { confirm: 'Are you sure you want to delete this equipment?' }, class: "btn btn-danger"%></td>
+        <td><%= link_to("Details", [service.user, service], :class => 'action show', class: "btn btn-info") %></td>
+        <td><%= link_to("Edit", edit_user_service_path(service.user, service), :class => 'action edit', class: "btn btn-warning") %></td>
+        <td><%= link_to 'Delete', [service.user, service], method: :delete, data: { confirm: 'Are you sure you want to delete this equipment?' }, class: "btn btn-danger"%></td>
       </tr>
     </tr>
     <% end %>
@@ -46,7 +47,9 @@
 </div>
 
 </div>
-
+<br />
+<h1>Calendar View:</h1>
+<br /><br />
 <div id="calendar"></div>
 
 
@@ -78,14 +81,15 @@ dayClick: function(date, allDay, jsEvent, view) {
 
                 editable: true,
                 height: 450,
+                timeFormat: ' ',
                     events: {
-                          url: '/users?'+ user_id +'/services.json',
+                          url: '/users/'+ user_id +'/services.json',
                           type: 'GET',
                           error: function() {
                               alert('there was an error while fetching events!');
                           },
-                          backgroundColor: '#272b30',
-                          textColor: '#eee8d5'
+                          backgroundColor: '#3399f3',
+                          textColor: '#000000'
                     }
             });
 

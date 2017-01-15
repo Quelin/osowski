@@ -3,5 +3,5 @@ json.array!(@services) do |service|
   json.title service.name
   json.start service.start_date
   json.end service.end_date
-  json.url service_path(user: @user.id format: :html)
+  json.url user_service_url(service.user_id, service, format: :html)
 end

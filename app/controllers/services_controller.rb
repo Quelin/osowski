@@ -4,34 +4,39 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-  @services = User.find(params[:user]).services
+    user = User.find(params[:user_id])
+    @services = user.services
   end
 
   # GET /services/1
   # GET /services/1.json
   def show
+    user = User.find(params[:user_id])
+    @service = user.services.find(params[:id])
   end
 
   # GET /services/new
   def new
-    @service = Service.new
-    @user =  User.find(params[:user])
+    user = User.find(params[:user_id])
+    @service = user.services.build
   end
 
   # GET /services/1/edit
   def edit
-    @user =  User.find(params[:user])
+    user = User.find(params[:user_id])
+    @service = user.services.find(params[:id])
   end
 
   # POST /services
   # POST /services.json
   def create
-    @service = Service.new(service_params)
+    user = User.find(params[:user_id])
+    @service = user.services.create(service_params)
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
-        format.json { render :show, status: :created, location: @service }
+        format.html { redirect_to [@service.user, @service], notice: 'Service was successfully created.' }
+        format.json { render :show, status: :created, location: [@service.user, @service] }
       else
         format.html { render :new }
         format.json { render json: @service.errors, status: :unprocessable_entity }
@@ -42,9 +47,14 @@ class ServicesController < ApplicationController
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
+
+    user = User.find(params[:user_id])
+    @service = user.services.find(params[:id])
+
+
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
+        format.html { redirect_to [@service.user, @service], notice: 'Service was successfully updated.' }
         format.json { render :show, status: :ok, location: @service }
       else
         format.html { render :edit }
@@ -56,10 +66,11 @@ class ServicesController < ApplicationController
   # DELETE /services/1
   # DELETE /services/1.json
   def destroy
+    user = User.find(params[:user_id])
+    @service = user.services.find(params[:id])
     @service.destroy
-    @user = @service.user
     respond_to do |format|
-      format.html { redirect_to services_path(user: @service.user_id), notice: 'Service was successfully destroyed.' }
+      format.html { redirect_to(user_services_url) }
       format.json { head :no_content }
     end
   end

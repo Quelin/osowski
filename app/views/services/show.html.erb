@@ -23,11 +23,11 @@
     </tr>
     <tr>
       <th>Service Start Date:</th>
-      <td><%= @service.start_date %></td>
+      <td><%= @service.try(:start_date).try(:to_date) %></td>
     </tr>
     <tr  class="active">
       <th>Service End Date:</th>
-      <td><%= @service.end_date %></td>
+      <td><%= @service.try(:end_date).try(:to_date) %></td>
     </tr>
   </table>
                 </div>
