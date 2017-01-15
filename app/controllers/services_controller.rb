@@ -20,6 +20,7 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
+    @user =  User.find(params[:user])
   end
 
   # POST /services
@@ -56,8 +57,9 @@ class ServicesController < ApplicationController
   # DELETE /services/1.json
   def destroy
     @service.destroy
+    @user = @service.user
     respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
+      format.html { redirect_to services_path(user: @service.user_id), notice: 'Service was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,4 +1,4 @@
-<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link', class: "btn btn-info") %>
+<%= link_to("<< Back to List", {:action => 'index', :user => @service.user_id}, :class => 'back-link', class: "btn btn-info") %>
 <br /><br /><br />
     <div class="panel panel-info">
         <div class="panel-heading">Service details</div>
