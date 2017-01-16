@@ -15,12 +15,13 @@ ActiveRecord::Schema.define(version: 20170111192024) do
   create_table "services", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.boolean  "own_equipment"
+    t.string   "owner_of_equipment"
+    t.boolean  "is_serviced"
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|

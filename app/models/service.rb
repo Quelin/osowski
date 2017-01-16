@@ -4,7 +4,7 @@ class Service < ApplicationRecord
 
 	def status
 
-  		self.own_equipment ? "Yes" : "No"
+  		self.is_serviced ? "Yes" : "No"
 
 	end
 end

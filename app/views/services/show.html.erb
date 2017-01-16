@@ -19,7 +19,11 @@
     </tr>
     <tr  class="active">
       <th>Own Equipment:</th>
-      <td><%= @service.own_equipment %></td>
+      <td><%= @service.owner_of_equipment %></td>
+    </tr>
+    <tr  class="active">
+      <th>Is Serviced?:</th>
+      <td><%= @service.is_serviced %></td>
     </tr>
     <tr>
       <th>Service Start Date:</th>
@@ -28,6 +32,10 @@
     <tr  class="active">
       <th>Service End Date:</th>
       <td><%= @service.try(:end_date).try(:to_date) %></td>
+    </tr>
+    <tr  class="active">
+      <th>User:</th>
+      <td><%= @service.user.email if @service.user %></td>
     </tr>
   </table>
                 </div>

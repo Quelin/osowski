@@ -16,7 +16,8 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
-      <th>Own equipment</th>
+      <th>Owner of Equipment</th>
+      <th>Is Serviced?</th>
       <th>Start date</th>
       <th>End date</th>
       <th>User</th>
@@ -31,6 +32,7 @@
       <tr>
         <td><%= service.name %></td>
         <td><%= truncate(service.description, length: 20, separator: ' ') %></td>
+        <td><%= service.owner_of_equipment %></td>
         <td><%= service.status %></td>
         <td><%= service.try(:start_date).try(:to_date) %></td>
         <td><%= service.try(:end_date).try(:to_date) %></td>

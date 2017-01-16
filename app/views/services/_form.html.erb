@@ -22,10 +22,16 @@
   </div>
 
   <div class="field">
-    <%= f.label :own_equipment %>
-    <%= f.check_box :own_equipment, class: "checkbox inline", id: 'checkbox' %>
+    <%= f.label :owner_of_equipment %><br>
+    <%= f.select :owner_of_equipment, options_for_select(["GRUNE","Mixed","Own"]), {}, class: "form-control" %>
+  </div><br />
+
+  <div class="field">
+    <%= f.label :is_serviced %>
+    <%= f.check_box :is_serviced, class: "checkbox inline", id: 'checkbox' %>
   </div><br />
   
+  <div id="delivery">
   <div class="field">
     <label class="control-label" for="start_date">Start Time</label><br />
       <%= f.text_field(:start_date, class: "form-control datepicker", :'data-date-format' => "YYYY-MM-DD" ) %>
@@ -34,8 +40,7 @@
     <label class="control-label" for="end_date">End Time</label><br />
       <%= f.text_field(:end_date, class: "form-control datepicker", :'data-date-format' => "YYYY-MM-DD" ) %>
   </div><br />
-
-  <br />
+</div>
   <div class = "form-buttons">
     <%= submit_tag("Create Service", class: "btn btn-success") %>
   </div>
@@ -49,3 +54,17 @@
                   });
             });
         </script>
+
+        <script>
+var checkbox = document.getElementById('checkbox');
+var delivery_div = document.getElementById('delivery');
+var showHiddenDiv = function(){
+   if(checkbox.checked) {
+     delivery_div.style['display'] = 'block';
+   } else {
+     delivery_div.style['display'] = 'none';
+   } 
+}
+checkbox.onclick = showHiddenDiv;
+showHiddenDiv();
+</script>
