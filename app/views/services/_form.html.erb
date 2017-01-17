@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :owner_of_equipment %><br>
-    <%= f.select :owner_of_equipment, options_for_select(["GRUNE","Mixed","Own"]), {}, class: "form-control" %>
+    <%= f.text_field :owner_of_equipment, class: "form-control" %>
   </div><br />
 
   <div class="field">
@@ -53,9 +53,7 @@
 
                   });
             });
-        </script>
 
-        <script>
 var checkbox = document.getElementById('checkbox');
 var delivery_div = document.getElementById('delivery');
 var showHiddenDiv = function(){
