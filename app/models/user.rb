@@ -15,7 +15,7 @@ class User < ApplicationRecord
 		     validates_numericality_of :REGON, :NIP, allow_blank: true
          validates :NIP, length: { is: 10 }, allow_blank: true
          
-         validates :NIP, :REGON, :organization_name, :presence => true, :if => :is_organization?
+         validates :NIP, :organization_name, :presence => true, :if => :is_organization?
          validates :NIP, :REGON, :organization_name, absence: true, :unless => :is_organization?
 
 end
