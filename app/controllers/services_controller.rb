@@ -1,11 +1,18 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
+  def index_all
+
+    @services = Service.all
+
+  end
+
   # GET /services
   # GET /services.json
   def index
     user = User.find(params[:user_id])
     @services = user.services
+    @calendar_services = @services.where.not(start_date: nil)
   end
 
   # GET /services/1

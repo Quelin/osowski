@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="turbolinks-cache-control" content = "no-cache">
   <title>ClientManagementSystem</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -23,6 +24,7 @@
 <%= nav_bar :fixed => :top, brand: "Client Management System", :responsive => true, :class => "navbar navbar-inverse"  do %>
     <%= menu_group do %>
         <%= menu_item "Users", users_path%>
+        <%= menu_item "List of Equipment", services_path%>
      <% end %>
      <%= csrf_meta_tags %>
 
