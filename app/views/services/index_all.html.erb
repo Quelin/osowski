@@ -20,7 +20,6 @@
     
     <tbody>
       <% @services.each do |service| %>
-    <tr>
       <tr>
         <td><%= service.name %></td>
         <td><%= truncate(service.description, length: 20, separator: ' ') %></td>
@@ -31,7 +30,6 @@
         <td><%= service.user.email if service.user %></td>
         <td><%= service.user.lastname if service.user %></td>
       </tr>
-    </tr>
     <% end %>
   </tbody>
     
