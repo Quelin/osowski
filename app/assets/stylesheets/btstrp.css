@@ -279,12 +279,15 @@ th {
   position: relative;
   top: 1px;
   display: inline-block;
-  font-family: 'Glyphicons Halflings';
+  font-family: inherit;
   font-style: normal;
   font-weight: normal;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon:before{
+    font-family:'Glyphicons Halflings';
 }
 .glyphicon-asterisk:before {
   content: "\002a";

@@ -25,6 +25,7 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 gem 'bootstrap-sass'
 gem 'fullcalendar-rails'
+gem 'date_validator'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+
  get '/services', to: 'services#index_all'
  root 'home#index'
 
@@ -8,4 +8,14 @@ devise_for :users, controllers: {registrations: 'registrations'}, :path_prefix =
 	resources :users do 
 		resources :services 
 	end
+
+	resources :services do 
+		resources :invoices 
+	end
+
+	 resources :services do
+  	 	resources :packages
+	end
+
+
 end

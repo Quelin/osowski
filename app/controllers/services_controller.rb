@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:edit, :update, :destroy]
 
   def index_all
 
@@ -77,7 +77,7 @@ class ServicesController < ApplicationController
     @service = user.services.find(params[:id])
     @service.destroy
     respond_to do |format|
-      format.html { redirect_to(user_services_url) }
+      format.html { redirect_to user_services_url, notice: 'Service was successfully destroyed.'}
       format.json { head :no_content }
     end
   end

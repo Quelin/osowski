@@ -10,8 +10,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :organization_name
       t.integer :REGON
       t.integer :NIP
-      t.integer :phone
-      t.integer :mobile_phone
+      t.integer :phone, limit: 8
+      t.integer :mobile_phone, limit: 8
       t.string :postcode
       t.string :street
       t.string :town

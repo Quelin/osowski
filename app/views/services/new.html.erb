@@ -1,7 +1,9 @@
 <div class ="col-lg-4 col-lg-offset-1">
 	<h1>New Equipment or Service</h1>
 <br />
-<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link', class: "btn btn-info") %>
+<%= link_to( {:action => 'index'}, :class => 'back-link', class: "btn btn-primary") do %>
+<i class="glyphicon glyphicon-chevron-left"> Back to List</i>
+<% end %>
 <br />
 <br />
 
