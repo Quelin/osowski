@@ -23,14 +23,14 @@
       <% @services.each_with_index do |service, index| %>
       <tr>
         <td><%= index + 1 %></td>
-        <td><%= service.name %></td>
-        <td><%= truncate(service.description, length: 20, separator: ' ') %></td>
+        <td><%= truncate(service.name, length: 10) %></td>
+        <td><%= truncate(service.description, length: 18) %></td>
         <td><%= service.owner_of_equipment %></td>
         <td><%= service.status %></td>
         <td><%= service.try(:start_date).try(:to_date) %></td>
         <td><%= service.try(:end_date).try(:to_date) %></td>
-        <td><%= service.user.email if service.user %></td>
-        <td><%= service.user.lastname if service.user %></td>
+        <td><%= truncate(service.user.email, length: 10) if service.user %></td>
+        <td><%= truncate(service.user.lastname, length: 10) if service.user %></td>
       </tr>
     <% end %>
   </tbody>
