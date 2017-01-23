@@ -3,5 +3,5 @@ class Invoice < ApplicationRecord
 
 
 	validates_presence_of :name, :link
-	validates :name, uniqueness: true
+	validates :name, uniqueness: {scope: :service_id}
 end

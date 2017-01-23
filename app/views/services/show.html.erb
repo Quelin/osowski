@@ -21,15 +21,15 @@
       <th>Own Equipment:</th>
       <td><%= @service.owner_of_equipment %></td>
     </tr>
-    <tr  class="active">
+    <tr>
       <th>Is Serviced?:</th>
       <td><%= @service.is_serviced %></td>
     </tr>
-    <tr>
+    <tr class="active">
       <th>Service Start Date:</th>
       <td><%= @service.try(:start_date).try(:to_date) %></td>
     </tr>
-    <tr  class="active">
+    <tr>
       <th>Service End Date:</th>
       <td><%= @service.try(:end_date).try(:to_date) %></td>
     </tr>
