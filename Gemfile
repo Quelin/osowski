@@ -26,6 +26,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 gem 'bootstrap-sass'
 gem 'fullcalendar-rails'
 gem 'date_validator'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug', platform: :mri
