@@ -16,9 +16,9 @@
       
             <h2 id="type-blockquotes"><%= link_to(invoice.name, invoice.link) %>
               &nbsp;&nbsp;
-              <%= link_to("", edit_service_invoice_path(invoice.service, invoice), :class => 'action edit', class: "btn btn-warning glyphicon glyphicon-pencil") %>
+              <%= link_to("", edit_service_invoice_path(invoice.service, invoice), :class => 'action edit', class: "btn btn-warning btn-sm glyphicon glyphicon-pencil") %>
               
-              <%= link_to '', [invoice.service, invoice], method: :delete, data: { confirm: 'Are you sure you want to delete this equipment?' }, class: "btn btn-danger glyphicon glyphicon-trash"%></h2>
+              <%= link_to '', [invoice.service, invoice], method: :delete, data: { confirm: 'Are you sure you want to delete this equipment?' }, class: "btn btn-danger btn-sm glyphicon glyphicon-trash"%></h2>
       
 
       <div class="row">

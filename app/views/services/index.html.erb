@@ -39,15 +39,15 @@
         <td><%= service.try(:start_date).try(:to_date) %></td>
         <td><%= service.try(:end_date).try(:to_date) %></td>
         <td><%= truncate(service.user.lastname, length: 10) if service.user %></td>
-        <td><%= link_to("", [service.user, service], :class => 'action show', class: "btn btn-info glyphicon glyphicon-info-sign") %>
-        <%= link_to("", edit_user_service_path(service.user, service), :class => 'action edit', class: "btn btn-warning glyphicon glyphicon-pencil") %>
-        <%= link_to '', [service.user, service], method: :delete, data: { confirm: 'Are you sure you want to delete this equipment?' }, class: "btn btn-danger glyphicon glyphicon-trash"%></td>
+        <td><%= link_to("", [service.user, service], :class => 'action show', class: "btn btn-info btn-sm glyphicon glyphicon-info-sign") %>
+        <%= link_to("", edit_user_service_path(service.user, service), :class => 'action edit', class: "btn btn-warning btn-sm glyphicon glyphicon-pencil") %>
+        <%= link_to '', [service.user, service], method: :delete, data: { confirm: 'Are you sure you want to delete this equipment?' }, class: "btn btn-danger btn-sm glyphicon glyphicon-trash"%></td>
 
-        <td><%= link_to "", new_service_invoice_path(service), class: "btn btn-success glyphicon glyphicon-plus"%>
-        <%= link_to "", service_invoices_path(service), class: "btn btn-info glyphicon glyphicon-search"%></td>
+        <td><%= link_to "", new_service_invoice_path(service), class: "btn btn-success btn-sm glyphicon glyphicon-plus"%>
+        <%= link_to "", service_invoices_path(service), class: "btn btn-info btn-sm glyphicon glyphicon-search"%></td>
 
-        <td><%= link_to "", new_service_package_path(service), class: "btn btn-success glyphicon glyphicon-plus"%>
-        <%= link_to "", service_packages_path(service), class: "btn btn-info glyphicon glyphicon-search"%></td>
+        <td><%= link_to "", new_service_package_path(service), class: "btn btn-success btn-sm glyphicon glyphicon-plus"%>
+        <%= link_to "", service_packages_path(service), class: "btn btn-info btn-sm glyphicon glyphicon-search"%></td>
     </tr>
     <% end %>
   </tbody>
