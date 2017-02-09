@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module CMS
   class Application < Rails::Application
   	config.assets.paths << "#{Rails}/vendor/assets/fonts"
-
+	config.i18n.load_path += Dir[Rails.root.join('locales', '*.{rb,yml}').to_s]
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

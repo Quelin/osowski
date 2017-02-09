@@ -1,0 +1,26 @@
+<h2> Witaj <%= @user.name%></h2>
+<br />
+
+<p>Administator właśnie dodał nowe urządzenie do Twojego konta, aby zobaczyć więcej szczegółów kliknij w ten <%= link_to("link", user_service_url(@service.user, @service)) %>.</p>
+<br />
+<p>Informacje na temat nowego urządzenia:</p>
+<p>Nazwa: <strong><%= @service.name%></strong></p>
+<p>Opis: <strong><%= @service.description%></strong></p>
+<% if @service.start_date? %>
+<p>Początek serwisu: <strong><%= @service.start_date.to_date%></strong></p>
+<% else %>
+<p><strong>Serwis nie został jeszcze wykupiony, w przypadku chęci założenia serwisu na urządzenie prosimy o kontakt z Administratorem.</strong></p>
+<% end %>
+<% if @service.end_date? %>
+<p>Początek serwisu: <strong><%= @service.start_date.to_date%></strong></p>
+<% else %>
+<p></p>
+<% end %>
+<br />
+
+<p>W razie problemów z logowanie prosimy o kontakt pod numerem telefonu 696-488-524, lub mailowo na adres - <a href="m.osowski@grune.pl">m.osowski@grune.pl</a></p>
+
+<br />
+
+<h3>Pozdrawiam serdecznie <br />
+Administrator serwisu Grune</h3>

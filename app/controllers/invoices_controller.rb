@@ -13,24 +13,27 @@ class InvoicesController < ApplicationController
 
   # GET /invoices/new
   def new
-    service = Service.find(params[:service_id])
-    @invoice = service.invoices.build
+    @service = Service.find(params[:service_id])
+    @invoice = @service.invoices.build
   end
 
   # GET /invoices/1/edit
   def edit
-    service = Service.find(params[:service_id])
-    @invoice = service.invoices.find(params[:id])
+    @service = Service.find(params[:service_id])
+    @invoice = @service.invoices.find(params[:id])
   end
 
   # POST /invoices
   # POST /invoices.json
   def create
-    service = Service.find(params[:service_id])
-    @invoice = service.invoices.create(invoice_params)
-
+    @service = Service.find(params[:service_id])
+    @invoice = @service.invoices.create(invoice_params)
     respond_to do |format|
       if @invoice.save
+
+        InvoiceMailer.new_invoice(@service, @invoice).deliver
+
+
         format.html { redirect_to service_invoices_url, location: [@invoice.service, @invoice], notice: 'Invoice was successfully created.' }
         format.json { render :show, status: :created, location: [@invoice.service, @invoice] }
       else
@@ -44,8 +47,8 @@ class InvoicesController < ApplicationController
   # PATCH/PUT /invoices/1.json
   def update
 
-    service = Service.find(params[:service_id])
-    @invoice = service.invoices.find(params[:id])
+    @service = Service.find(params[:service_id])
+    @invoice = @service.invoices.find(params[:id])
 
     respond_to do |format|
       if @invoice.update(invoice_params)
@@ -61,8 +64,8 @@ class InvoicesController < ApplicationController
   # DELETE /invoices/1
   # DELETE /invoices/1.json
   def destroy
-    service = Service.find(params[:service_id])
-    @invoice = service.invoices.find(params[:id])
+    @service = Service.find(params[:service_id])
+    @invoice = @service.invoices.find(params[:id])
     @invoice.destroy
     respond_to do |format|
       format.html { redirect_to service_invoices_url, notice: 'Invoice was successfully destroyed.' }
@@ -78,6 +81,6 @@ class InvoicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
-      params.require(:invoice).permit(:name, :link, :description, :service_id)
+      params.require(:invoice).permit(:name, :link, :description, :service_id, :user_id)
     end
 end

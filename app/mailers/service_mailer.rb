@@ -1,15 +1,16 @@
-class UserMailer < ApplicationMailer
+class ServiceMailer < ApplicationMailer
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.user_mailer.new_user.subject
   #
-	def new_user(user)
+	def new_service(user, service)
 		@user = user
+		@service = service
 
 		mail(to: user.email,
-			subject: "Witaj w serwisie GRUNE"
+			subject: "GRUNE: Nowe urządzenie!"
 			)
 
 	end

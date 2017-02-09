@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem "twitter-bootstrap-rails"
 gem 'devise'
+gem 'devise-i18n'
 gem "less-rails"
 gem "therubyracer"
 gem 'jquery-datatables-rails', '~> 3.4.0'
@@ -27,6 +28,7 @@ gem 'bootstrap-sass'
 gem 'fullcalendar-rails'
 gem 'date_validator'
 gem 'figaro'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri

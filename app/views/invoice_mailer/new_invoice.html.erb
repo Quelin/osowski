@@ -1,0 +1,18 @@
+<h2> Witaj <%= @user.name%></h2>
+<br />
+
+<p>Administator właśnie dodał nową fakturę do urządzenie <%= @service.name%>, aby zobaczyć więcej szczegółów kliknij w ten <%= link_to("link", service_invoices_url(@invoice.service, @invoice)) %>.</p>
+<br />
+<p>Informacje na temat nowo wystawionej faktury:</p>
+<p>Nazwa: <strong><%= @invoice.name%></strong></p>
+<p>Opis: <strong><%= @invoice.description%></strong></p>
+<p>Link: <strong><%= link_to(@invoice.link, @invoice.link) %></strong></p>
+
+<br />
+
+<p>W razie problemów z logowanie prosimy o kontakt pod numerem telefonu 696-488-524, lub mailowo na adres - <a href="m.osowski@grune.pl">m.osowski@grune.pl</a></p>
+
+<br />
+
+<h3>Pozdrawiam serdecznie <br />
+Administrator serwisu Grune</h3>

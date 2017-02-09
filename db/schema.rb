@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170122144437) do
     t.text     "link"
     t.text     "description"
     t.integer  "service_id"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170122144437) do
     t.text     "link"
     t.text     "description"
     t.integer  "service_id"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
