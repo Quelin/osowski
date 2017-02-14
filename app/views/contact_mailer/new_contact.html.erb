@@ -1,0 +1,17 @@
+<h2>Nowe zapytanie od Użytkownika:</h2>
+<p>Wysłane przez: <strong><%= @contact.name%></strong></p>
+<p>Adres mail: <strong><%= link_to(@contact.email, "mailto:#{@contact.email}") %></strong></p>
+<p>Dotyczy urządzenia: <strong><%= @service.name%></strong></p>
+<p>Zapytanie: </p>
+
+<p><strong><%= @contact.content.gsub(/\n/, '<br/>').html_safe %></strong></p>
+<% if @service.start_date? %>
+<p>Początek serwisu: <strong><%= @service.start_date.to_date%></strong></p>
+<% else %>
+<h3><strong>NIE USTALONO SERWISU!!!</strong></h3>
+<% end %>
+<% if @service.end_date? %>
+<p>Początek serwisu: <strong><%= @service.start_date.to_date%></strong></p>
+<% else %>
+<p></p>
+<% end %>

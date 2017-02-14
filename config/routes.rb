@@ -17,5 +17,9 @@ devise_for :users, controllers: {registrations: 'registrations'}, :path_prefix =
   	 	resources :packages
 	end
 
+	resources :contacts, only: [:new, :create]
+	resources :messages, only: [:new, :create]
+	resources :infos, only: [:new, :create]
+
 
 end

@@ -1,0 +1,27 @@
+<h1>Wyślij mail do Użytkownika:</h1>
+<%= form_for @info do |f| %>
+
+<div class="well bs-component">
+
+   <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email, class: "form-control", :value => @users.email%>
+  </div>
+
+   <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content, required: true, rows: 10, cols: 25, class: "form-control" %>
+  </div>
+
+  <br />
+
+   <div class="hidden_contact">
+    <%= f.label :nickname %><br>
+    <%= f.text_field :nickname, hint: 'Leave it blank', class: "form-control" %>
+  </div>
+
+
+  <div class = "form-buttons">
+    <%= submit_tag("Wyślij wiadomość", class: "btn btn-success") %>
+  </div> </div>
+<% end %>

@@ -35,6 +35,13 @@ section,
 summary {
   display: block;
 }
+
+.hidden_contact {
+
+  display: none;
+
+}
+
 audio,
 canvas,
 progress,
