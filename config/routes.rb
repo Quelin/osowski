@@ -9,6 +9,10 @@ devise_for :users, controllers: {registrations: 'registrations'}, :path_prefix =
 		resources :services 
 	end
 
+	resources :users do 
+		resources :instructions
+	end
+
 	resources :services do 
 		resources :invoices 
 	end

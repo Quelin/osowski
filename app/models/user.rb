@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :services
   has_many :packages
   has_many :invoices
+  has_many :instructions
 
 
   devise :database_authenticatable,

@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function() {
 $('#users').DataTable({
 
   // ajax: ...,
-  autoWidth: true,
+  //autoWidth: true,
   // autoWidth: false,
   // pagingType: 'full_numbers',
   // processing: true,
@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function() {
 $('#users1').DataTable({
 
   // ajax: ...,
-  autoWidth: true,
+  //autoWidth: true,
   // pagingType: 'full_numbers',
   // processing: true,
   // serverSide: true,

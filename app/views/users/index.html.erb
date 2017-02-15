@@ -1,5 +1,5 @@
 
-<div class="col-lg-15">
+<div class="col-lg-13">
 <div class = "panel panel-primary">
 	<div class="panel-heading">
      <h3 class="panel-title">Users</h3>
@@ -28,6 +28,7 @@
 			<th>Mobile Phone</th>
 			<th>Actions</th>
 			<th>Equipment</th>
+			<th>Instructions</th>
 			<th>Mailing</th>
 		</tr>
 		</thead>
@@ -50,6 +51,9 @@
 			<td><%= link_to "", new_user_service_path(f), class: "btn btn-success btn-xs glyphicon glyphicon-plus"%>
 				<%= link_to "", user_services_path(f), class: "btn btn-info btn-xs glyphicon glyphicon-search"%>
 			</td>
+			<td><%= link_to "", new_user_instruction_path(f), class: "btn btn-success btn-xs glyphicon glyphicon-plus"%>
+				<%= link_to "", user_instructions_path(f), class: "btn btn-info btn-xs glyphicon glyphicon-search"%>
+			</td>
 			<td><%= link_to "", new_info_path(:id => f.id), class: "btn btn-default btn-xs glyphicon glyphicon-envelope"%>
 			</td>
 		</tr>
@@ -69,6 +73,7 @@
 			<th>Mobile Phone</th>
 			<th>Actions</th>
 			<th>Equipment</th>
+			<th>Instructions</th>
 			<th>Mailing</th>
 		</tr>
 		</thead>
@@ -88,6 +93,8 @@
 			<td><%= link_to "", new_user_service_path(o), class: "btn btn-success btn-xs glyphicon glyphicon-plus"%>
 				<%= link_to "", user_services_path(o), class: "btn btn-info btn-xs glyphicon glyphicon-search"%>
 			</td>
+			<td><%= link_to "", new_user_instruction_path(o), class: "btn btn-success btn-xs glyphicon glyphicon-plus"%>
+				<%= link_to "", user_instructions_path(o), class: "btn btn-info btn-xs glyphicon glyphicon-search"%>
 			</td>
 			<td><%= link_to "", new_info_path(:id => o.id), class: "btn btn-default btn-xs glyphicon glyphicon-envelope"%>
 			</td>
