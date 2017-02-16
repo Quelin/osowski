@@ -1,0 +1,12 @@
+<h2> Witaj <%= @user.name %></h2>
+<br />
+<p>Przypominamy o zbliżającym się końcu daty serwisowej dla sprzętu <strong><%= @service.name %></strong>, aby zobaczyć więcej szczegółów kliknij w ten <%= link_to("link", user_service_url(@service.user, @service)) %>.</p>
+<br />
+<p>Serwis na sprzęt wygasnie z dniem: <strong><%= @service.end_date.to_date %></strong></p>
+
+<p>W razie problemów z logowanie i/lub chęcią przedłużenia serwisu prosimy o kontakt pod numerem telefonu 696-488-524, lub mailowo na adres - <a href="mailto:m.osowski@grune.pl">m.osowski@grune.pl</a></p>
+
+<br />
+
+<h3>Pozdrawiam serdecznie <br />
+Administrator serwisu Grune</h3>

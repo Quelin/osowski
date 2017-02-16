@@ -16,4 +16,6 @@ class Service < ApplicationRecord
   		self.is_serviced ? "Yes" : "No"
 
 	end
+
+
 end
