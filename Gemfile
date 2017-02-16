@@ -28,6 +28,7 @@ gem 'bootstrap-sass'
 gem 'fullcalendar-rails'
 gem 'date_validator'
 gem 'figaro'
+gem 'cocoon'
 
 
 group :development, :test do

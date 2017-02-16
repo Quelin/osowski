@@ -41,10 +41,22 @@
       <%= f.text_field(:end_date, class: "form-control datepicker", :'data-date-format' => "YYYY-MM-DD" ) %>
   </div><br />
 </div>
-  <div class = "form-buttons">
+
+
+  <h3>Components</h3>
+ <%= f.fields_for :components do |fields| %>
+        <%= render 'component_fields', :f => fields %>
+    <% end %>
+
+    <div id='links'>
+      <br />
+      <%= link_to_add_association 'Add Field', f, :components %>
+    </div>
+    <br /><br />
     <%= submit_tag("Create Service", class: "btn btn-success") %>
   </div> </div>
 <% end %>
+
 
   <script type="text/javascript">
             $(function () {

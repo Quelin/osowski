@@ -3,7 +3,11 @@ class Service < ApplicationRecord
 
 	has_many :invoices
 	has_many :packages
+	has_many :components
 	
+
+	accepts_nested_attributes_for :components, reject_if: :all_blank, allow_destroy: true
+
 
 	validates_presence_of :name
 	validates :name, uniqueness: {scope: :user_id}
