@@ -40,5 +40,30 @@
       <td><%= @service.user.email if @service.user %></td>
     </tr>
   </table>
+
+  <h2>Components:</h2><br />
+  <div class="col-md-4">
+  <h5><strong>Name:</strong></h5>
+  </div>
+  <div class="col-md-4">
+  <h5><strong>Serial Number:</strong></h5>
+  </div>
+  <div class="col-md-4">
+  <h5><strong>Description:</strong></h5>
+  </div><br /><br />
+
+  <% @service.components.each do |c| %>
+
+  <div class="col-md-4">
+  <%= c.name %>
+  </div>
+  <div class="col-md-4">
+  <%= c.serial_number %>
+  </div>
+  <div class="col-md-4">
+  <%= c.description %>
+  </div>
+
+  <%end%>
                 </div>
               </div>

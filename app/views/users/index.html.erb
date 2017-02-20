@@ -1,5 +1,5 @@
 
-<div class="col-lg-13">
+<div class="col-lg-13 col-md-pull-1">
 <div class = "panel panel-primary">
 	<div class="panel-heading">
      <h3 class="panel-title">Users</h3>
@@ -28,14 +28,37 @@
 			<th>Mobile Phone</th>
 			<th>Actions</th>
 			<th>Equipment</th>
-			<th>Instructions</th>
+			<th>Instructions</th>	
 			<th>Mailing</th>
 		</tr>
+		
 		</thead>
 
 		<tbody>
 		<% @organization.each do |f| %>
-		
+		<% if f.admin? %>
+		<tr class="danger">
+			<td><%= f.email %></td>
+			<td><%= f.lastname %></td>
+			<td><%= f.organization_name %></td>
+			<td><%= f.NIP %></td>
+			<td><%= f.phone %></td>
+			<td><%= f.mobile_phone %></td>
+			<td>
+				<%= link_to("", {:action => 'show', :id => f.id}, :class => 'action show', class: "btn btn-info btn-xs glyphicon glyphicon-info-sign") %>
+				<%= link_to( "", {:action => 'edit', :id => f.id}, :class => 'action edit', class: "btn btn-warning btn-xs glyphicon glyphicon-pencil") %>
+				<%= link_to '', f, method: :delete, data: { confirm: 'Are you sure you want to delete this user?' }, class: "btn btn-danger btn-xs glyphicon glyphicon-trash" %>
+			</td>
+			<td><%= link_to "", new_user_service_path(f), class: "btn btn-success btn-xs glyphicon glyphicon-plus"%>
+				<%= link_to "", user_services_path(f), class: "btn btn-info btn-xs glyphicon glyphicon-search"%>
+			</td>
+			<td><%= link_to "", new_user_instruction_path(f), class: "btn btn-success btn-xs glyphicon glyphicon-plus"%>
+				<%= link_to "", user_instructions_path(f), class: "btn btn-info btn-xs glyphicon glyphicon-search"%>
+			</td>
+			<td><%= link_to "", new_info_path(:id => f.id), class: "btn btn-default btn-xs glyphicon glyphicon-envelope"%>
+			</td>
+		</tr>
+		<% else %>
 		<tr>
 			<td><%= f.email %></td>
 			<td><%= f.lastname %></td>
@@ -57,6 +80,8 @@
 			<td><%= link_to "", new_info_path(:id => f.id), class: "btn btn-default btn-xs glyphicon glyphicon-envelope"%>
 			</td>
 		</tr>
+		<% end %>
+
 		<% end %>
 		</tbody>
 	</table>

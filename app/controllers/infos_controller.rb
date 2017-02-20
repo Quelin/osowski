@@ -3,6 +3,7 @@ class InfosController < ApplicationController
   def new
     @info = Info.new
     @users = User.find(params[:id])
+    
   end
 
   def create
