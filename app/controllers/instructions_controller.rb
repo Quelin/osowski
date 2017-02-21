@@ -1,19 +1,24 @@
 class InstructionsController < ApplicationController
   before_action :set_instruction, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :new, :show, :create, :update, :delete, :destroy]
 
 
   # GET /instructions
   # GET /instructions.json
   def index
+    if current_user.admin?
     user = User.find(params[:user_id])
     @instructions = user.instructions.order(created_at: :desc)
+      else
+
+      @instructions = current_user.instructions.order(created_at: :desc)
+
+    end
   end
 
   # GET /instructions/1
   # GET /instructions/1.json
   def show
-    user = User.find(params[:user_id])
-    @instruction = user.instructions.find(params[:id])
   end
 
   # GET /instructions/new
@@ -80,6 +85,14 @@ class InstructionsController < ApplicationController
   end
 
   private
+
+    def check_user
+      unless current_user.admin?
+
+        redirect_to user_instructions_path(current_user), :alert => "Niestety nie masz dostępu do tej podstrony systemu."
+
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_instruction
       @instruction = Instruction.find(params[:id])

@@ -1,10 +1,17 @@
 class PackagesController < ApplicationController
   before_action :set_package, only: [:edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :new, :show, :create, :update, :delete, :destroy]
 
 
   def index
+    if current_user.admin?
     @service = Service.find(params[:service_id])
     @packages = @service.packages.order(created_at: :desc)
+    else
+
+      @packages = current_user.packages.order(created_at: :desc)
+
+    end
   end
 
 
@@ -18,6 +25,9 @@ class PackagesController < ApplicationController
     @package = @service.packages.find(params[:id])
   end
 
+  def show
+
+  end
  
   def create
     @service = Service.find(params[:service_id])
@@ -67,6 +77,14 @@ class PackagesController < ApplicationController
   end
 
   private
+
+    def check_user
+      unless current_user.admin?
+
+        redirect_to service_packages_path(current_user), :alert => "Niestety nie masz dostępu do tej podstrony systemu."
+
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_package
       @package = Package.find(params[:id])

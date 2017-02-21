@@ -1,5 +1,7 @@
 class InfosController < ApplicationController
 
+  before_action :check_user, only: [:new, :create]
+
   def new
     @info = Info.new
     @users = User.find(params[:id])
@@ -18,6 +20,14 @@ class InfosController < ApplicationController
   end
 
 private
+
+   def check_user
+      unless current_user.admin?
+
+        redirect_to users_path(current_user), :alert => "Niestety nie masz dostępu do tej podstrony systemu."
+
+      end
+    end
 
   def info_params
     params.require(:info).permit(:name, :email, :content, :nickname)

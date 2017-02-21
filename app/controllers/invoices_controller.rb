@@ -10,7 +10,7 @@ class InvoicesController < ApplicationController
     @invoices = @service.invoices.order(created_at: :desc)
     else
 
-      @invoices = current_user.invoices
+      @invoices = current_user.invoices.order(created_at: :desc)
 
     end
   end
@@ -89,7 +89,7 @@ class InvoicesController < ApplicationController
      def check_user
       unless current_user.admin?
 
-        redirect_to service_invoices_path(@invoice), :alert => "Niestety nie masz dostępu do tej podstrony systemu."
+        redirect_to service_invoices_path(current_user), :alert => "Niestety nie masz dostępu do tej podstrony systemu."
 
       end
     end

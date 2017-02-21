@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
 
+ before_action :check_user, only: [:new, :create]
+
   def new
     @message = Message.new
     @users = User.all
@@ -21,6 +23,14 @@ class MessagesController < ApplicationController
   end
 
 private
+
+   def check_user
+      unless current_user.admin?
+
+        redirect_to users_path(current_user), :alert => "Niestety nie masz dostępu do tej podstrony systemu."
+
+      end
+    end
 
   def message_params
     params.require(:message).permit(:content, :nickname)
