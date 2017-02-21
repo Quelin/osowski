@@ -1,25 +1,34 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :new, :create, :update, :delete, :destroy, :index_all]
 
   def index_all
 
-    @services = Service.all
+      @services = Service.all
 
   end
 
   # GET /services
   # GET /services.json
   def index
+    if current_user.admin?
     user = User.find(params[:user_id])
     @services = user.services
     @calendar_services = @services.where.not(start_date: nil)
+    else
+    @services = current_user.services
+    end
   end
 
   # GET /services/1
   # GET /services/1.json
   def show
+    if current_user.admin?
     user = User.find(params[:user_id])
     @service = user.services.find(params[:id])
+    else
+    @service = current_user.services.find(params[:id])
+    end
   end
 
   # GET /services/new
@@ -86,6 +95,13 @@ class ServicesController < ApplicationController
   end
 
   private
+    def check_user
+      unless current_user.admin?
+
+        redirect_to user_services_path(current_user), :alert => "Niestety nie masz dostępu do tej podstrony systemu."
+
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_service
       @service = Service.find(params[:id])

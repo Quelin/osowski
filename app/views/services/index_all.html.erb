@@ -1,20 +1,20 @@
 <div class = "panel panel-primary">
   <div class="panel-heading">
-     <h3 class="panel-title">Equipment and Services</h3>
+     <h3 class="panel-title">Urządzenia oraz serwis (lista wszystkich elementów niezależnie od Użytkownika):</h3>
     </div>
     <div class="panel-body">
   <table class = "table table-striped table-hover" id = "services">
     <thead>
     <tr>
-      <th>No.</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Owner of Equipment</th>
-      <th>Is Serviced?</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>User Mail</th>
-      <th>User Lastname</th>
+      <th>LP</th>
+      <th>Nazwa</th>
+      <th>Opis</th>
+      <th>Właściciel</th>
+      <th>Początek serwisu</th>
+      <th>Koniec serwisu</th>
+      <th>E-mail</th>
+      <th>Imię</th>
+      <th>Nazwisko</th>
     </tr>
     </thead>
 
@@ -23,14 +23,14 @@
       <% @services.each_with_index do |service, index| %>
       <tr>
         <td><%= index + 1 %></td>
-        <td><%= truncate(service.name, length: 10) %></td>
-        <td><%= truncate(service.description, length: 18) %></td>
+        <td><%= service.name %></td>
+        <td><%= truncate(service.description, length: 35) %></td>
         <td><%= service.owner_of_equipment %></td>
-        <td><%= service.status %></td>
         <td><%= service.try(:start_date).try(:to_date) %></td>
         <td><%= service.try(:end_date).try(:to_date) %></td>
-        <td><%= truncate(service.user.email, length: 10) if service.user %></td>
-        <td><%= truncate(service.user.lastname, length: 10) if service.user %></td>
+        <td><%= service.user.email if service.user %></td>
+        <td><%= service.user.name if service.user %></td>
+        <td><%= service.user.lastname if service.user %></td>
       </tr>
     <% end %>
   </tbody>

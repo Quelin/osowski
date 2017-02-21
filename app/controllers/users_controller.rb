@@ -1,8 +1,15 @@
 class UsersController < ApplicationController
+
+  before_action :check_user, only: [:edit, :new, :show, :create, :update, :delete, :destroy]
+
   	def index
+      if current_user.admin?
   		@users = User.all
       @organization = User.organization
       @private_person = User.private_person
+      else
+        
+      end
   	end
       def show
       @user = User.find(params[:id])
@@ -58,8 +65,16 @@ class UsersController < ApplicationController
     end
     end
 
-
   private
+
+    def check_user
+      unless current_user.admin?
+
+        redirect_to users_path(current_user), :alert => "Niestety nie masz dostępu do tej podstrony systemu."
+
+      end
+    end
+
     def set_user
       @user = User.find(params[:id])
     end

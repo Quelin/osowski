@@ -17,7 +17,7 @@ class Service < ApplicationRecord
 	
 	def status
 
-  		self.is_serviced ? "Yes" : "No"
+  		self.is_serviced ? "Tak" : "Nie"
 
 	end
 

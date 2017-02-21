@@ -1,13 +1,14 @@
 
+<% if current_user.admin? %>
 <div class="col-lg-13 col-md-pull-1">
 <div class = "panel panel-primary">
 	<div class="panel-heading">
-     <h3 class="panel-title">Users</h3>
+     <h3 class="panel-title">Uzytkownicy systemu:</h3>
     </div>
     <br /><br />
 <div class="row text-center pagination-centered">
 <%= link_to( {:action => 'new'}, :class => 'action new', class: "btn btn-success") do %>
-<i class="glyphicon glyphicon-plus">Add New User</i>
+<i class="glyphicon glyphicon-plus">&nbsp;Dodaj nowego użytkownika</i>
 <% end %><br /><br /></div>
     <div class="bs-component">
               <ul class="nav nav-tabs">
@@ -20,15 +21,15 @@
 	<table class = "table table-striped table-hover" id="users" >
 		<thead>
 		<tr>
-			<th>Email</th>
-			<th>Last Name</th>
-			<th>Organization Name</th>
+			<th>E-mail</th>
+			<th>Nazwisko</th>
+			<th>Nazwa spółki</th>
 			<th>NIP</th>
-			<th>Phone</th>
-			<th>Mobile Phone</th>
-			<th>Actions</th>
-			<th>Equipment</th>
-			<th>Instructions</th>	
+			<th>Telefon</th>
+			<th>Telefon komórkowy</th>
+			<th>Akcje&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			<th>Sprzęt</th>
+			<th>Intrukcje</th>	
 			<th>Mailing</th>
 		</tr>
 		
@@ -38,28 +39,9 @@
 		<% @organization.each do |f| %>
 		<% if f.admin? %>
 		<tr class="danger">
-			<td><%= f.email %></td>
-			<td><%= f.lastname %></td>
-			<td><%= f.organization_name %></td>
-			<td><%= f.NIP %></td>
-			<td><%= f.phone %></td>
-			<td><%= f.mobile_phone %></td>
-			<td>
-				<%= link_to("", {:action => 'show', :id => f.id}, :class => 'action show', class: "btn btn-info btn-xs glyphicon glyphicon-info-sign") %>
-				<%= link_to( "", {:action => 'edit', :id => f.id}, :class => 'action edit', class: "btn btn-warning btn-xs glyphicon glyphicon-pencil") %>
-				<%= link_to '', f, method: :delete, data: { confirm: 'Are you sure you want to delete this user?' }, class: "btn btn-danger btn-xs glyphicon glyphicon-trash" %>
-			</td>
-			<td><%= link_to "", new_user_service_path(f), class: "btn btn-success btn-xs glyphicon glyphicon-plus"%>
-				<%= link_to "", user_services_path(f), class: "btn btn-info btn-xs glyphicon glyphicon-search"%>
-			</td>
-			<td><%= link_to "", new_user_instruction_path(f), class: "btn btn-success btn-xs glyphicon glyphicon-plus"%>
-				<%= link_to "", user_instructions_path(f), class: "btn btn-info btn-xs glyphicon glyphicon-search"%>
-			</td>
-			<td><%= link_to "", new_info_path(:id => f.id), class: "btn btn-default btn-xs glyphicon glyphicon-envelope"%>
-			</td>
-		</tr>
 		<% else %>
 		<tr>
+		<% end %>
 			<td><%= f.email %></td>
 			<td><%= f.lastname %></td>
 			<td><%= f.organization_name %></td>
@@ -80,7 +62,6 @@
 			<td><%= link_to "", new_info_path(:id => f.id), class: "btn btn-default btn-xs glyphicon glyphicon-envelope"%>
 			</td>
 		</tr>
-		<% end %>
 
 		<% end %>
 		</tbody>
@@ -92,20 +73,24 @@
 		<table class = "table table-striped table-hover" id="users1" >
 		<thead>
 		<tr>
-			<th>Email</th>
-			<th>Last Name</th>
-			<th>Phone</th>
-			<th>Mobile Phone</th>
-			<th>Actions</th>
-			<th>Equipment</th>
-			<th>Instructions</th>
+			<th>E-mail</th>
+			<th>Nazwisko</th>
+			<th>Telefon</th>
+			<th>Telefon komórkowy</th>
+			<th>Akcje&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			<th>Sprzęt</th>
+			<th>Instrukcje</th>
 			<th>Mailing</th>
 		</tr>
 		</thead>
 
 		<tbody>
 		<% @private_person.each do |o| %>
+		<% if o.admin? %>
+		<tr class="danger">
+		<% else %>
 		<tr>
+		<% end %>
 			<td><%= o.email %></td>
 			<td><%= o.lastname %></td>
 			<td><%= o.phone %></td>
@@ -132,3 +117,37 @@
 <div style="display: none;" id="source-button" class="btn btn-primary btn-xs">&lt; &gt;</div>
 </div></div></div>
 </div>
+
+<% else %>
+<div class="col-lg-12 row text-center pagination-centered">
+<h3> Zanim zaczniesz! </h3>
+<p> W razie potrzeby tutaj znajdziesz link do pobrania aplikacji <a href="https://download.teamviewer.com/download/TeamViewerQS_pl.exe">pomocy zdalnej</a>. </p> <br />
+</div>
+<div class="col-lg-8">
+<div class="jumbotron">
+                <h1>Witaj <%= current_user.name %>!</h1><br />
+                <p>Poniżej znajdziesz informacje na temat swojego konta. W razie problemów lub widocznego błędu proszę skontaktuj się z administratorem przy pomocy formularza kontaktowego, który możesz znaleźć <%= link_to("tutaj", new_contact_url) %> lub wysyłając e-mail pozpośrednio na adres <a href="mailto:m.osowski@grune.pl">m.osowski@grune.pl</a>.</p>
+                <p> Imię i nazwisko: <strong><%= current_user.name %>&nbsp;<%= current_user.lastname %></strong></p>
+                <p> E-mail kontaktowy: <strong><%= current_user.email %></strong></p>
+                <% if current_user.phone? %><p> Numer telefonu: <strong><%= current_user.phone %></strong></p><% end %>
+                <p> Numer telefonu komórkowego: <strong><%= current_user.mobile_phone %></strong></p>
+                <% if current_user.organization_name? %><p> Nazwa firmy: <strong><%= current_user.organization_name %></strong></p><% end %>
+                <% if current_user.NIP? %><p> NIP firmy: <strong><%= current_user.NIP %></strong></p><% end %>
+                <% if current_user.REGON? %><p> REGON firmy: <strong><%= current_user.REGON %></strong></p><% end %>
+				<p> Adres: <strong><%= current_user.postcode %>&nbsp;<%= current_user.street %>&nbsp;<%= current_user.town %></strong></p>
+ </div>
+ </div>
+		 <div class="bs-component">
+         <div class="col-lg-4 jumbotron">
+         	<h5>Tutaj możesz przejść do sekcji ze swoimi urządzeniami.</h5><br />
+         	<%= link_to "Pokaż mi moje urządzenia", user_services_path(current_user), class: "btn btn-primary btn-lg"%>
+ 		</div>
+ 		<div class="col-lg-4 jumbotron">
+         	<h5>Tutaj możesz przejść do sekcji z instrukcjami.</h5><br />
+         	<%= link_to "Pokaż mi moje instrukcje", user_instructions_path(current_user), class: "btn btn-primary btn-lg"%>
+ 		</div>
+
+ 		</div>
+
+
+<% end %>

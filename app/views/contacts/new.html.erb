@@ -2,7 +2,7 @@
 <%= form_for @contact do |f| %>
 
 <div class="well bs-component">
-
+<div class="hidden_contact">
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name, required: true, class: "form-control", value: [current_user.name, current_user.lastname]%>
@@ -13,6 +13,7 @@
   <div class="field">
     <%= f.label :email %><br>
     <%= f.email_field :email, required: true, class: "form-control", value: current_user.email %>
+  </div>
   </div>
 
   <br />

@@ -1,11 +1,18 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :new, :show, :create, :update, :delete, :destroy]
 
   # GET /invoices
   # GET /invoices.json
   def index
+    if current_user.admin?
     @service = Service.find(params[:service_id])
     @invoices = @service.invoices.order(created_at: :desc)
+    else
+
+      @invoices = current_user.invoices
+
+    end
   end
 
   # GET /invoices/1
@@ -21,6 +28,10 @@ class InvoicesController < ApplicationController
   def edit
     @service = Service.find(params[:service_id])
     @invoice = @service.invoices.find(params[:id])
+  end
+
+  def show
+
   end
 
   # POST /invoices
@@ -74,6 +85,14 @@ class InvoicesController < ApplicationController
   end
 
   private
+
+     def check_user
+      unless current_user.admin?
+
+        redirect_to service_invoices_path(@invoice), :alert => "Niestety nie masz dostępu do tej podstrony systemu."
+
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice
       @invoice = Invoice.find(params[:id])

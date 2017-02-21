@@ -1,68 +1,75 @@
 <%= link_to( {:action => 'index'}, :class => 'back-link', class: "btn btn-primary") do %>
-<i class="glyphicon glyphicon-chevron-left"> Back to List</i>
+<i class="glyphicon glyphicon-chevron-left">&nbsp;Powrót do listy</i>
 <% end %>
 <br /><br />
     <div class="panel panel-info">
-        <div class="panel-heading">Service details</div>
+        <div class="panel-heading">Szczegóły urządzenia:</div>
         <div class="panel-body">
 
   <table class = "table table-striped table-hover">
-    <tr>
+    <tr class="active">
       <th>ID:</th>
       <td><%= @service.id %></td>
     </tr>
-    <tr class="active">
-      <th>Name:</th>
+    <tr>
+      <th>Nazwa:</th>
       <td><%= @service.name %></td>
     </tr>
-    <tr>
-      <th>Description:</th>
-      <td><%= @service.description %></td>
-    </tr>
-    <tr  class="active">
-      <th>Own Equipment:</th>
+    <tr class="active">
+      <th>Właściciel:</th>
       <td><%= @service.owner_of_equipment %></td>
     </tr>
     <tr>
-      <th>Is Serviced?:</th>
-      <td><%= @service.is_serviced %></td>
+      <th>Serwisowany?:</th>
+      <td><%= @service.status %></td>
     </tr>
     <tr class="active">
-      <th>Service Start Date:</th>
+      <th>Początek serwisu:</th>
       <td><%= @service.try(:start_date).try(:to_date) %></td>
     </tr>
     <tr>
-      <th>Service End Date:</th>
+      <th>Koniec serwisu:</th>
       <td><%= @service.try(:end_date).try(:to_date) %></td>
     </tr>
+    <% if current_user.admin? %>
     <tr  class="active">
-      <th>User:</th>
+      <th>Przypisany Użytkownik:</th>
       <td><%= @service.user.email if @service.user %></td>
     </tr>
+    <% end %>
   </table>
 
-  <h2>Components:</h2><br />
-  <div class="col-md-4">
-  <h5><strong>Name:</strong></h5>
+  <p><strong>Opis:</strong></p><br />
+  <p><%= @service.description.gsub(/\n/, '<br/>').html_safe %></p>
+
+  <h2>Komponenty urządzenia:</h2><br />
+  <div class="col-md-1">
+  <h5><strong>LP:</strong></h5>
+  </div>
+  <div class="col-md-3">
+  <h5><strong>Nazwa:</strong></h5>
+  </div>
+  <div class="col-md-3">
+  <h5><strong>Numer seryjny:</strong></h5>
   </div>
   <div class="col-md-4">
-  <h5><strong>Serial Number:</strong></h5>
-  </div>
-  <div class="col-md-4">
-  <h5><strong>Description:</strong></h5>
+  <h5><strong>Opis komponentu:</strong></h5>
   </div><br /><br />
 
-  <% @service.components.each do |c| %>
-
-  <div class="col-md-4">
+  <% @service.components.each_with_index do |c, index| %>
+  
+  <div class="col-md-1">
+  <%= index + 1 %>
+  </div>
+  <div class="col-md-3">
   <%= c.name %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
   <%= c.serial_number %>
   </div>
   <div class="col-md-4">
   <%= c.description %>
-  </div>
+  </div><br /><br />
 
   <%end%>
                 </div>
