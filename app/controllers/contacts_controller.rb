@@ -9,14 +9,17 @@ class ContactsController < ApplicationController
     
     @contact = Contact.new(contact_params)
 
-    @service = Service.find(params[:service])
+    if params[:service].present?
+      @service = Service.find(params[:service])
+    else
+    end
 
 
     if @contact.valid?
       ContactMailer.new_contact(@contact, @service).deliver
-       redirect_to new_contact_path, :notice => "Your message has been sent."
+       redirect_to new_contact_path, :notice => "Twoja wiadomość została wysłana."
     else
-      flash[:alert] = "An error occurred while delivering this message."
+      flash[:alert] = "Wystąpił błąd podczas wysyłania wiadomości."
       render :new
     end
   end

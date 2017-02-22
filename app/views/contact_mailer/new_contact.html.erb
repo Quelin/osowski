@@ -1,10 +1,17 @@
 <h2>Nowe zapytanie od Użytkownika:</h2>
 <p>Wysłane przez: <strong><%= @contact.name%></strong></p>
 <p>Adres mail: <strong><%= link_to(@contact.email, "mailto:#{@contact.email}") %></strong></p>
+<% if @service.present? %>
 <p>Dotyczy urządzenia: <strong><%= @service.name%></strong></p>
+<% else %>
+<p><strong>Zapytanie ogólne - Użytkownik nie wybrał urządzenia!</strong></p>
+<% end %>
+
+
 <p>Zapytanie: </p>
 
 <p><strong><%= @contact.content.gsub(/\n/, '<br/>').html_safe %></strong></p>
+<% if @service.present? %>
 <% if @service.start_date? %>
 <p>Początek serwisu: <strong><%= @service.start_date.to_date%></strong></p>
 <% else %>
@@ -14,4 +21,5 @@
 <p>Początek serwisu: <strong><%= @service.start_date.to_date%></strong></p>
 <% else %>
 <p></p>
+<% end %>
 <% end %>

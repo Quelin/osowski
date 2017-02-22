@@ -20,15 +20,15 @@
 
 
         <div class="field">
-    <%= f.label :service %><br>
-    <%= f.select_tag :service, options_from_collection_for_select(current_user.services, "id", "name"), class: "form-control" %>
+    <%= f.label "Wybierz urządzenie, do którego odnosi się twoje pytanie (jeśli to zapytanie ogólne zostaw to pole puste)" %><br>
+    <%= f.select_tag :service, options_from_collection_for_select(current_user.services, "id", "name"), include_blank: true, class: "form-control" %>
     </div>
 
 
   <br />
 
    <div class="field">
-    <%= f.label :content %><br>
+    <%= f.label "Treść wiadomości" %><br>
     <%= f.text_area :content, required: true, rows: 10, cols: 25, class: "form-control" %>
   </div>
 

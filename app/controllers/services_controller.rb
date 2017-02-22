@@ -17,6 +17,7 @@ class ServicesController < ApplicationController
     @calendar_services = @services.where.not(start_date: nil)
     else
     @services = current_user.services
+    @calendar_services = @services.where.not(start_date: nil)
     end
   end
 

@@ -24,7 +24,9 @@
 <%= nav_bar :fixed => :top, brand: "GRUNE", :responsive => true, :class => "navbar navbar-inverse"  do %>
     <%= menu_group do %>
         <%= menu_item "Użytkownicy", users_path%>
+        <%= menu_item "Lista urządzeń", services_path%>
         <%= menu_item "Formularz kontaktowy", new_contact_path%>
+        <%= menu_item "Mass Mailing", new_message_path%>
      <% end %>
      <%= csrf_meta_tags %>
 
