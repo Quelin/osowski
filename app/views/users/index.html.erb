@@ -121,20 +121,23 @@
 <% else %>
 <div class="col-lg-12 row text-center pagination-centered">
 <h3> Zanim zaczniesz! </h3>
-<p> W razie potrzeby tutaj znajdziesz link do pobrania aplikacji <a href="https://download.teamviewer.com/download/TeamViewerQS_pl.exe">pomocy zdalnej</a>. </p> <br />
+<p> W razie potrzeby tutaj znajdziesz link do pobrania aplikacji <a href="https://download.teamviewer.com/download/TeamViewerQS_pl.exe">pomocy zdalnej</a> dla wersji systemu Windows lub <a href="https://download.teamviewer.com/download/TeamViewerQS.dmg">pomocy zdalnej</a> dla wersji systemu Mac. </p> <br />
 </div>
 <div class="col-lg-8">
 <div class="jumbotron">
                 <h1>Witaj <%= current_user.name %>!</h1><br />
-                <p>Poniżej znajdziesz informacje na temat swojego konta. W razie problemów lub widocznego błędu proszę skontaktuj się z administratorem przy pomocy formularza kontaktowego, który możesz znaleźć <%= link_to("tutaj", new_contact_url) %> lub wysyłając e-mail pozpośrednio na adres <a href="mailto:m.osowski@grune.pl">m.osowski@grune.pl</a>.</p>
-                <p> Imię i nazwisko: <strong><%= current_user.name %>&nbsp;<%= current_user.lastname %></strong></p>
-                <p> E-mail kontaktowy: <strong><%= current_user.email %></strong></p>
-                <% if current_user.phone? %><p> Numer telefonu: <strong><%= current_user.phone %></strong></p><% end %>
-                <p> Numer telefonu komórkowego: <strong><%= current_user.mobile_phone %></strong></p>
-                <% if current_user.organization_name? %><p> Nazwa firmy: <strong><%= current_user.organization_name %></strong></p><% end %>
-                <% if current_user.NIP? %><p> NIP firmy: <strong><%= current_user.NIP %></strong></p><% end %>
-                <% if current_user.REGON? %><p> REGON firmy: <strong><%= current_user.REGON %></strong></p><% end %>
-				<p> Adres: <strong><%= current_user.postcode %>&nbsp;<%= current_user.street %>&nbsp;<%= current_user.town %></strong></p>
+                <p>Poniżej znajdziesz informacje na temat swojego konta. W razie problemów lub widocznego błędu proszę skontaktuj się z administratorem przy pomocy formularza kontaktowego, wysyłając e-mail pozpośrednio na adres <%= link_to("m.osowski@grune.pl", new_contact_url) %>.</p><br />
+
+                <div class="list-group table-of-contents">
+              	<p class="list-group-item">Imię i nazwisko: <strong><%= current_user.name %>&nbsp;<%= current_user.lastname %></strong></p>
+              	<p class="list-group-item"> E-mail kontaktowy: <strong><%= current_user.email %></strong></p>
+                <% if current_user.phone? %><p class="list-group-item"> Numer telefonu: <strong><%= current_user.phone %></strong></p><% end %>
+                <p class="list-group-item"> Numer telefonu komórkowego: <strong><%= current_user.mobile_phone %></strong></p>
+                <% if current_user.organization_name? %><p class="list-group-item"> Nazwa firmy: <strong><%= current_user.organization_name %></strong></p><% end %>
+                <% if current_user.NIP? %><p class="list-group-item"> NIP firmy: <strong><%= current_user.NIP %></strong></p><% end %>
+                <% if current_user.REGON? %><p class="list-group-item"> REGON firmy: <strong><%= current_user.REGON %></strong></p><% end %>
+				<p class="list-group-item"> Adres: <strong><%= current_user.postcode %>&nbsp;<%= current_user.street %>&nbsp;<%= current_user.town %></strong></p>
+              </div>
  </div>
  </div>
 		 <div class="bs-component">

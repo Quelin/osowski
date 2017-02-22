@@ -24,11 +24,11 @@
       <td><%= @service.status %></td>
     </tr>
     <tr class="active">
-      <th>Początek serwisu:</th>
+      <th>Początek wsparcia:</th>
       <td><%= @service.try(:start_date).try(:to_date) %></td>
     </tr>
     <tr>
-      <th>Koniec serwisu:</th>
+      <th>Koniec wsparcia:</th>
       <td><%= @service.try(:end_date).try(:to_date) %></td>
     </tr>
     <% if current_user.admin? %>
